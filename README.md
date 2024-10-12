@@ -2,4 +2,4 @@
 
 Loan Calculator program that also creates a detailed loan amortization schedule. 
 
-![Screenshot](Screenshots/Screenshot.PNG){ width=422 height=521 }
+<img src="Screenshots/Screenshot.PNG" alt="screenshot" width="422" height="521" />
