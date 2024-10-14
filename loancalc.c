@@ -1,4 +1,4 @@
-// Compile with: tcc simple.c -lcomctl32 -mwindows
+// Compile with: tcc LoanCalc.c -lcomctl32 -lcomdlg32 -mwindows
 
 #include <windows.h>
 #include <commctrl.h>
@@ -205,14 +205,14 @@ void CreateReport(HWND hMemoEdit) {
         interest = round(interest * 100) / 100.0f;
         double principal = payment - interest - periodfees;
         principal = round(principal * 100) / 100.0f;
-        if (principal > balance) {
-            principal = balance;  // Adjust the principal to not exceed the balance
-            payment = principal + interest + periodfees;
+        if (period == numPayments && balance != principal) {
+            principal = balance;
         }
+        payment = principal + interest + periodfees;
         totalInterest += interest;
         totalPrincipal += principal;
         balance -= principal;
-
+        
         //sprintf(line, "| %4d | %7.2f | %9.2f | %10.2f | %14.2f | %13.2f | %5.2f | %11.2f |\r\n",
         sprintf(line, "| %4d | %14s | %14s | %14s | %14s | %14s | %6s | %14s |\r\n",
                 period, formatNumber(payment, 2), formatNumber(principal, 2), formatNumber(interest, 2), formatNumber(totalPrincipal, 2), formatNumber(totalInterest, 2), formatNumber(periodfees, 2), formatNumber(balance, 2));
