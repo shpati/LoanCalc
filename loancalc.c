@@ -291,6 +291,7 @@ LRESULT CALLBACK MemoFormProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
             // Generate the report
             CreateReport(hMemoEdit);
+            SetFocus(hMemoEdit);
             break;
         }
         case WM_SIZE: {
